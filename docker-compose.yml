@@ -1,13 +1,8 @@
 version: "2.1"
 services:
-  bot:
-    build: .
-    restart: "unless-stopped"
   test_bot:
     restart: 'always'
     build: .
     entrypoint: ["/entrypoint.sh"]
-    networks:
-      - rabbit
-    volumes:
-      - /sockets/bots:/sockets/bots
+    environment:
+      URL_PATH: "test_bot"
